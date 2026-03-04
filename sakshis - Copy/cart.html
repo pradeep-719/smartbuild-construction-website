@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BuildSmart | Your Cart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-color: #007bff; --success-color: #28a745; --danger-color: #dc3545; --light-gray: #f8f9fa; --white: #ffffff; }
+        body { font-family: 'Roboto', sans-serif; background: var(--light-gray); padding: 1rem; }
+        .cart-container { max-width: 700px; margin: 0 auto; background: var(--white); border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 1.5rem; }
+        h1 { text-align: center; margin-bottom: 2rem; }
+        .cart-item { display: flex; align-items: center; padding: 0.8rem 0; border-bottom: 1px solid #dee2e6; gap: 1rem; }
+        .cart-item:last-child { border-bottom: none; }
+        .cart-item img { width: 70px; height: 70px; object-fit: cover; border-radius: 4px; }
+        .item-details { flex-grow: 1; }
+        .quantity-control { display: flex; align-items: center; gap: 5px; margin-top: 0.4rem; }
+        .quantity-control button { background: #e9ecef; border: 1px solid #dee2e6; cursor: pointer; width: 28px; height: 28px; }
+        .remove-btn { background: var(--danger-color); border: none; color: var(--white); padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+        .cart-summary { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed #dee2e6; display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; font-weight: bold; }
+        #checkout-btn { display:block; background: var(--success-color); color: var(--white); padding: 12px 25px; font-size: 1.05rem; border-radius: 6px; text-decoration:none; text-align:center; cursor:pointer; margin: 2rem auto 0; width: fit-content; }
+        .empty-cart-message { text-align: center; color: #6c757d; padding: 2rem 0; }
+        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--primary-color); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <a href="paints.html" class="back-link">← Back to Products</a>
+    <h1>Your Shopping Cart</h1>
+    <div class="cart-container">
+        <div id="cart-items"></div>
+        <div class="cart-summary">
+            <span>Total:</span>
+            <span id="totalAmount">₹0.00</span>
+        </div>
+        <a id="checkout-btn" href="address.php">Proceed to Checkout</a>
+    </div>
+
+    <script>
+        // Corrected Default cart data with unique product IDs
+        const defaultCart = [
+            { id: "dp001", name: "Dulux Premium Paint", price: 399, quantity: 1, img: "https://i.imgur.com/examplePaint1.png" },
+            { id: "rs001", name: "Fine River Sand (per cft)", price: 85, quantity: 9, img: "https://i.imgur.com/exampleSand1.png" } // Combined quantity
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalAmountElement = document.getElementById('totalAmount');
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || defaultCart;
+
+            function saveCart() {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            }
+
+            function updateCartDisplay() {
+                cartItemsContainer.innerHTML = '';
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<p class="empty-cart-message">Your cart is empty.</p>';
+                    totalAmountElement.textContent = '₹0.00';
+                    localStorage.setItem('totalAmount', '0.00'); 
+                    return;
+                }
+
+                let total = 0;
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+                    itemElement.innerHTML = `
+                        <img src="${item.img}" alt="${item.name}">
+                        <div class="item-details">
+                            <strong>${item.name}</strong>
+                            <p>₹${item.price.toFixed(2)}</p>
+                            <div class="quantity-control">
+                                <button data-index="${index}" class="decrease-qty">-</button>
+                                <span>${item.quantity}</span>
+                                <button data-index="${index}" class="increase-qty">+</button>
+                            </div>
+                        </div>
+                        <p>₹${itemTotal.toFixed(2)}</p>
+                        <button class="remove-btn" data-index="${index}">Remove</button>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                });
+
+                totalAmountElement.textContent = `₹${total.toFixed(2)}`;
+                localStorage.setItem('totalAmount', total.toFixed(2));
+            }
+
+            cartItemsContainer.addEventListener('click', (e) => {
+                const index = e.target.dataset.index;
+                if (!index) return; // Prevent errors if clicking on non-button elements
+
+                if (e.target.classList.contains('remove-btn')) {
+                    cart.splice(index, 1);
+                    saveCart();
+                } else if (e.target.classList.contains('increase-qty')) {
+                    cart[index].quantity++;
+                    saveCart();
+                } else if (e.target.classList.contains('decrease-qty')) {
+                    cart[index].quantity--;
+                    if (cart[index].quantity === 0) {
+                        cart.splice(index, 1);
+                    }
+                    saveCart();
+                }
+            });
+
+            updateCartDisplay();
+        });
+    </script>
+</body>
+</html>

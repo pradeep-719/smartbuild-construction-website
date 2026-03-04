@@ -1,0 +1,1483 @@
+/* Custom CSS Variables */
+:root {
+    --primary-orange: #e67e22; /* Safety orange */
+    --dark-blue: #2c3e50;    /* Deep charcoal */
+    --light-grey: #f0f2f5;   /* Light grey, like concrete */
+    --text-dark: #444;       /* Dark text */
+    --text-medium: #666;     /* Medium grey text */
+    --text-light: #777;      /* Lighter grey text */
+    --bg-white: #fff;        /* White background */
+    --bg-light: #f8fbfb;     /* Very light grey background */
+    --border-light: #eee;    /* Light border color */
+    --border-medium: #e0e0e0;/* Medium border color */
+}
+
+/* Import Google Fonts - Poppins for clean, modern typography */
+/* CORRECTED URL for Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* --- General Body & Typography --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.55; /* Slightly tighter line height for body */
+    color: var(--text-dark); /* Darker text for a more rugged feel */
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-grey); /* Light grey background, like concrete */
+    -webkit-font-smoothing: antialiased; /* Smoother font rendering */
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+h1, h2, h3, h4 {
+    color: var(--dark-blue); /* Deep charcoal for headings, strong and foundational */
+    font-weight: 700;
+    margin-bottom: 0.45em;
+    line-height: 1.12;
+}
+
+h1 { font-size: 3.2em; line-height: 1.05; }
+h2 { font-size: 2.5em; margin-top: 1.3em; text-align: center; }
+h3 { font-size: 1.9em; }
+h4 { font-size: 1.4em; }
+
+.section-title {
+    margin-bottom: 18px;
+    position: relative;
+    padding-bottom: 9px;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 55px;
+    height: 3.5px;
+    background-color: var(--primary-orange); /* Safety orange for accent */
+    border-radius: 2px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.12em;
+    color: var(--text-medium);
+    margin-bottom: 45px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Header --- */
+.header {
+    background-color:#fff;
+     padding: 12px 20px; /* Slightly adjusted padding */
+    box-shadow: 0 1px 9px rgba(0,0,0,0.09);
+    border-bottom: 2px solid #facc15; /* Thinner border */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+      display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 1.7em;
+    font-weight: bold;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+.logo img {
+    border-radius: 5px;
+    vertical-align: middle;
+    height: 38px;
+ background-color:#fff;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+.nav-links a {
+    color: var(--text-dark); /* Nav links dark grey */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 4px 0;
+}
+.nav-links a:hover {
+    color: var(--primary-orange); /* Nav link hover to safety orange */
+    transform: translateY(-1.5px);
+}
+.nav-links .btn {
+    margin-left: 9px;
+}
+
+/* Define btn-outline-white for use on dark backgrounds (like the default register-card) */
+.btn-outline-white {
+    background-color: transparent;
+    color: var(--bg-white); /* White text */
+    border-color: var(--bg-white); /* White border */
+}
+
+.btn-outline-white:hover {
+    background-color: var(--bg-white); /* White background on hover */
+    color: var(--dark-blue); /* Deep charcoal text on hover */
+    border-color: var(--bg-white);
+    transform: translateY(-2.5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* NEW: Style for buttons specifically inside the orange register-card */
+.register-card.orange-bg .btn {
+    background-color:var(--dark-blue); /* Deep charcoal background */
+    color: var(--bg-white); /* White text */
+    border-color: var(--dark-blue); /* Deep charcoal border */
+}
+
+.register-card.orange-bg .btn:hover {
+    background-color:#3b506b; /* Slightly lighter charcoal on hover */
+    border-color: #3b506b;
+    transform: translateY(-2.5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+/* --- Buttons --- */
+.btn {
+    padding: 11px 22px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background-color:var(--primary-orange); /* Primary button safety orange */
+    color: var(--bg-white);
+    border-color: var(--primary-orange);
+}
+
+.btn-primary:hover {
+    background-color: #d35400; /* Darker orange on hover */
+    border-color: #d35400;
+    transform: translateY(-2.5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.btn-secondary {
+    background-color: #7f8c8d; /* Grey for secondary buttons */
+    color: var(--bg-white);
+    border-color: #7f8c8d;
+}
+.btn-secondary:hover {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    transform: translateY(-2.5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color:var(--dark-blue); /* Outline button text to deep charcoal */
+    border-color: var(--dark-blue); /* Outline button border to deep charcoal */
+}
+.btn-outline:hover {
+    background-color:var(--dark-blue); /* Outline button hover background to deep charcoal */
+    color: var(--bg-white);
+    transform: translateY(-2.5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.btn-lg {
+    padding: 14px 32px;
+    font-size: 1.05em;
+}
+.btn-sm {
+    padding: 10px 20px; /* Increased padding from 7px 14px */
+    font-size: 1em;    /* Increased font-size from 0.88em to a more standard size */
+    background-color: orange;
+}
+.btn-full-width {
+    width: 100%;
+    margin-top: 22px;
+    box-sizing: border-box;
+    background-color:black; /* This specific color override should be handled carefully if it applies globally */
+    color: #fff;
+}
+
+.btn-link {
+    gap: 4px;
+    color: var(--primary-orange); /* Link button to safety orange */
+}
+.btn-link:hover {
+    text-decoration: underline;
+    color: #d35400; /* Darker orange on hover */
+}
+
+
+/* --- Utility Classes --- */
+.bg-light {
+    background-color: var(--bg-light);
+}
+.text-center {
+    text-align: center;
+}
+.mt-4 {
+    margin-top: 35px;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    background-image:url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmNjZDAwcWoyZm14czR6dWFleXVhN2Ewbm94bGQ1Z2xnNWwwM3piNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WwxNKRIzhcaanid2hn/giphy.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: var(--bg-white);
+    padding: 50px 0 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-main-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 320px;
+    text-align: left;
+    max-width: 58%;
+}
+.hero-text h1 {
+    margin-bottom: 18px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    color: var(--bg-white); /* Hero heading remains white for contrast */
+}
+.hero-text .lead {
+    font-size: 1.3em;
+    margin-bottom: 35px;
+    opacity: 0.98;
+}
+.hero-actions {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.hero-card {
+    background-color:var(--primary-orange); /* Explicitly orange background for contrast */
+    color: var(--text-dark); /* Card text dark grey */
+    padding: 35px;
+    border-radius: 13px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+    flex: 0 0 420px;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+}
+.hero-card h3 {
+    margin-bottom: 25px;
+    font-size: 1.9em;
+    color: var(--dark-blue); /* Card heading deep charcoal */
+}
+.form-group {
+    margin-bottom: 18px;
+}
+.form-group label {
+    margin-bottom: 9px;
+    font-weight: 600;
+    color: #555;
+    font-size: 1.02em;
+}
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid var(--border-medium); /* Slightly darker default border */
+    border-radius: 9px;
+    box-sizing: border-box;
+    font-size: 0.98em;
+    color: #333;
+    background-color: #f9f9f9; /* Changed to a very light grey for differentiation */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary-orange); /* Focus border color to safety orange */
+    box-shadow: 0 0 0 3px rgba(230,126,34,0.18); /* Focus shadow to safety orange */
+    outline: none;
+}
+.input-row {
+    display: flex;
+    gap: 18px;
+}
+.talk-to-planner {
+    margin-top: 25px;
+    font-size: 1.02em;
+    color: var(--text-medium); /* Using a neutral grey for this text by default */
+}
+.talk-to-planner a {
+    color: var(--primary-orange); /* Example: Making the link part orange */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.talk-to-planner a:hover {
+    color: #d35400;
+    text-decoration: underline;
+}
+
+
+
+/* Homes Building Tools Section - Based on image_659f41.png */
+.building-tools {
+    background-color: #f4f4f4;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.building-tools h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.building-tools p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.tools-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    justify-content: center;
+    gap: 30px; /* Spacing between cards */
+    /* Ensure the grid itself has enough horizontal space */
+    max-width: 1200px; /* Or a suitable max-width for your content area */
+    margin: 0 auto; /* Center the grid */
+    
+}
+
+.tool-card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push arrow button to bottom */
+
+    /* Adjusted for 4 grids in one line: */
+    /* Calculate flex-basis considering 30px gap for 4 items: */
+    /* (100% - (3 * 30px gap)) / 4 items = (100% - 90px) / 4 */
+    /* This calculation ensures they fit precisely. */
+    flex: 1 1 calc(25% - 22.5px); /* (90px / 4 items = 22.5px per item for gap) */
+    min-width: 220px; /* Ensure cards don't get too small before wrapping */
+    max-width: 280px; /* Optional: Keep individual cards from becoming too wide */
+    box-sizing: border-box; /* Crucial: Include padding and border in the element's total width */
+}
+
+.tool-card i {
+    font-size: 40px;
+    color:orange;
+    margin-bottom: 15px;
+    text-align: center; /* Center icon */
+    width: 100%; /* Allow centering */
+}
+
+.tool-card h3 {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center; /* Center heading */
+}
+
+.tool-card p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+    flex-grow: 1; /* Allow paragraph to take up available space */
+    text-align: left; /* Align paragraph text left */
+}
+
+.arrow-btn {
+    display: inline-block;
+    background-color: #ffc107; /* Yellow */
+    color: #333; /* Dark text for yellow background */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    align-self: flex-start; /* Align button to bottom left of card */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease;
+}
+
+.arrow-btn:hover {
+    background-color: #e0ac00; /* Darker yellow on hover */
+}
+
+.arrow-btn i {
+    font-size: 20px;
+    color: #333; /* Icon color for yellow button */
+    margin: 0; /* Remove margin from icon in button */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    /* At 1200px or less, if 4 columns are too squeezed, allow 3 per row */
+    .tool-card {
+        flex: 1 1 calc(33.33% - 20px); /* Adjust for 3 columns with gap */
+        max-width: calc(33.33% - 20px);
+    }
+}
+
+@media (max-width: 992px) {
+    /* Two columns on medium screens */
+    .tool-card {
+        flex: 1 1 calc(50% - 15px); /* Adjust for 2 columns with gap */
+        max-width: calc(50% - 15px);
+    }
+}
+
+@media (max-width: 768px) {
+    /* One column on small screens */
+    .tool-card {
+        flex: 1 1 90%; /* Nearly full width */
+        max-width: 350px; /* Max width for single column to prevent too wide cards */
+        margin: 0 auto; /* Center single card */
+    }
+}
+
+@media (max-width: 576px) {
+    .building-tools h2 {
+        font-size: 28px;
+    }
+
+    .building-tools p {
+        font-size: 16px;
+    }
+
+    .tool-card {
+        padding: 20px;
+    }
+
+    .tool-card i {
+        font-size: 35px;
+    }
+
+    .tool-card h3 {
+        font-size: 20px;
+    }
+
+    .tool-card p {
+        font-size: 14px;
+    }
+}
+
+/* Register Promo */
+.register-promo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px;
+    justify-content: center;
+    margin-top: 50px;
+}
+.register-card {
+    flex: 1;
+    min-width: 300px;
+    padding: 45px 28px;
+    border-radius: 13px;
+    box-shadow: 0 9px 28px rgba(0,0,0,0.11);
+    background-color: var(--dark-blue); /* Deep charcoal for default register card */
+    color: var(--bg-white);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.register-card.orange-bg {
+    background-color: var(--primary-orange); /* Accent register card to safety orange */
+}
+.register-card:hover {
+    transform: translateY(-9px);
+    box-shadow: 0 14px 38px rgba(0,0,0,0.18);
+}
+.register-card .icon {
+    font-size: 3.8em;
+    margin-bottom: 22px;
+    color: var(--bg-white);
+}
+.register-card h3 {
+    color: var(--bg-white);
+    margin-bottom: 18px;
+    font-size: 2em;
+}
+.register-card p {
+    margin-bottom: 28px;
+    opacity: 0.96;
+    font-size: 1.02em;
+    max-width: 290px;
+}
+
+/* Specific styling for buttons/links within .register-card to make them solid orange */
+.register-card .btn {
+    background-color: var(--primary-orange); /* Safety orange background */
+    color: var(--bg-white); /* White text */
+    border-color: var(--primary-orange); /* Orange border */
+    padding: 11px 22px; /* Standard button padding */
+    border-radius: 7px;
+    font-weight: 600;
+    text-decoration: none; /* Remove underline for links acting as buttons */
+    transition: all 0.3s ease;
+    display: inline-flex; /* Maintain flex for content alignment if any */
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    cursor: pointer;
+}
+
+.register-card .btn:hover {
+    background-color: #d35400; /* Darker orange on hover */
+    border-color: #d35400;
+    transform: translateY(-2.5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+
+/* --- Common Concerns Section --- */
+.common-concerns-section {
+    padding: 50px 0;
+    background-color: var(--light-grey); /* Light grey background */
+}
+.concerns-card {
+    background-color: var(--bg-white); /* Explicitly white */
+    padding: 45px;
+    border-radius: 13px;
+    box-shadow: 0 9px 28px rgba(0,0,0,0.09);
+    max-width: 850px;
+    margin: 0 auto;
+}
+.concerns-card h3 {
+    text-align: center;
+    color: var(--dark-blue); /* Concerns card heading deep charcoal */
+    margin-bottom: 14px;
+    font-size: 2.3em;
+}
+.concerns-card .subtitle {
+    font-size: 1.1em;
+    color: var(--text-light);
+    margin-bottom: 35px;
+}
+.concerns-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-bottom: 35px;
+}
+.concerns-list li {
+    background-color: var(--bg-white); /* Explicitly set to white for clear background */
+    padding: 16px 22px;
+    border-radius: 9px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-light);
+}
+.concerns-list li:hover {
+    background-color: #f7f9fc; /* Very subtle light hover */
+    transform: translateX(7px);
+    box-shadow: 0 4px 13px rgba(44,62,80,0.09); /* Shadow color adjusted to deep charcoal */
+}
+.concerns-list li span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.02em;
+}
+.concerns-list li .fas {
+    color: var(--primary-orange); /* Icon color to safety orange */
+    font-size: 1.15em;
+}
+.concerns-list li .fa-chevron-right {
+    color: #d8d8d8;
+    font-size: 0.9em;
+}
+
+/* Home Building Stages Section */
+.home-building-stages-section {
+    padding: 30px;
+    background-color: var(--bg-light);
+    max-width: 1000px;
+    margin: 40px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    min-height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+
+}
+
+/* Removed the ::before pseudo-element */
+
+.home-building-stages-section .container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0;
+ background-repeat: no-repeat;
+    background-size: cover;
+ background-image: 
+url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTZ0c2x0ZW00anllc3B5bjd1Y3hkbTVlM3U3bnNnYmxuamI0ajZ2ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l43OIxOfy2O1h2X711/giphy.gif');
+}
+
+.stages-card {
+    background-color: var(--bg-white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-light);
+    width: 350px;
+    margin-right: auto;
+}
+
+.stages-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: var(--dark-blue);
+    text-align: center;
+}
+
+.stages-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stages-card li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 17px;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.stages-card li:last-child {
+    border-bottom: none;
+}
+
+.stages-card li:hover {
+    background-color: #f0f0f0;
+    color: var(--primary-orange);
+}
+
+.stages-card li span {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 500;
+}
+
+.stages-card li i.fas {
+    color: var(--dark-blue);
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.stages-card li:hover i.fas {
+    color: var(--primary-orange);
+}
+
+.stages-card li i.fa-chevron-right {
+    font-size: 14px;
+    color: var(--text-medium);
+}
+.stages-card li:hover i.fa-chevron-right {
+    color: var(--primary-orange);
+}
+
+
+/* --- Top Rated Contractors --- */
+.top-rated-contractors {
+    padding: 50px 0;
+    background-color: var(--bg-white); /* White background for this section */
+}
+.top-rated-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+    margin-top: 50px;
+}
+.top-contractor-card {
+    background-color: var(--bg-white); /* Explicitly white */
+    padding: 28px;
+    border-radius: 13px;
+    box-shadow: 0 9px 28px rgba(0,0,0,0.09);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-light);
+}
+.top-contractor-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 14px 38px rgba(0,0,0,0.14);
+}
+.contractor-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+.contractor-header img {
+    border-radius: 50%;
+    border: 3.5px solid var(--dark-blue); /* Image border to deep charcoal */
+    object-fit: cover;
+    width: 65px;
+    height: 65px;
+}
+.contractor-details {
+    flex-grow: 1;
+}
+.contractor-details h4 {
+    margin: 0;
+    color: var(--dark-blue); /* Contractor name to deep charcoal */
+    font-size: 1.7em;
+}
+.contractor-details .specialty {
+    font-size: 0.98em;
+    color: var(--text-light);
+}
+.rating-display {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+.rating-display .stars {
+    color: #f1c40f; /* Yellow for stars */
+    font-size: 1.05em;
+    margin-bottom: 4px;
+}
+.rating-display .location {
+    font-size: 0.88em;
+    color: var(--text-medium);
+}
+
+.top-contractor-review {
+    background-color: #f9f9f9;
+    padding: 18px;
+    border-radius: 9px;
+    border-left: 4.5px solid var(--primary-orange); /* Accent line to safety orange */
+    position: relative;
+}
+.top-contractor-review p {
+    font-style: italic;
+    color: #555;
+    margin: 0;
+    line-height: 1.65;
+}
+.review-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+}
+.review-meta .likes {
+    color: var(--text-medium);
+    font-size: 0.92em;
+    display: flex;
+    align-items: center;
+    gap: 4.5px;
+}
+.review-meta .likes i {
+    color: var(--primary-orange); /* Like icon to safety orange */
+    font-size: 1.05em;
+}
+
+/* --- Material Selection Section --- */
+.material-selection-section {
+    padding: 50px 0;
+    background-color: var(--light-grey); /* Light grey background */
+}
+.price-range-filter {
+    background-color: var(--bg-white); /* Explicitly white background for the filter card */
+    padding: 35px;
+    border-radius: 13px;
+    box-shadow: 0 9px 28px rgba(0,0,0,0.09);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 45px;
+    justify-content: center;
+}
+.price-range-filter label {
+    font-weight: 600;
+    color: var(--dark-blue); /* Label color to deep charcoal */
+    white-space: nowrap;
+    font-size: 1.05em;
+}
+.price-range-filter input[type="range"] {
+    flex-grow: 1;
+    min-width: 180px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 7px;
+    background: #bdc3c7; /* Light grey for range track */
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.2s ease;
+}
+.price-range-filter input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-orange); /* Range thumb to safety orange */
+    cursor: pointer;
+    border: 2.5px solid var(--bg-white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+}
+.price-range-filter input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-orange); /* Range thumb to safety orange */
+    cursor: pointer;
+    border: 2.5px solid var(--bg-white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+}
+.checkbox-group {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+.checkbox-group label {
+    font-weight: normal;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+}
+.checkbox-group input[type="checkbox"] {
+    transform: scale(1.15);
+    accent-color: var(--primary-orange); /* Checkbox accent to safety orange */
+    background-color: var(--bg-white); /* Ensure checkbox itself has background */
+}
+
+.material-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    margin-top: 50px;
+}
+.material-card {
+    background-color: var(--bg-white); /* Explicitly white */
+    border-radius: 13px;
+    box-shadow: 0 9px 28px rgba(0,0,0,0.09);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-light);
+}
+.material-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 14px 38px rgba(0,0,0,0.14);
+}
+.material-header {
+    background-color: var(--dark-blue); /* Material header background to deep charcoal */
+    color: var(--bg-white);
+    padding: 16px 22px;
+    font-weight: bold;
+    font-size: 1.15em;
+}
+.material-content {
+    display: flex;
+    gap: 22px;
+    padding: 22px;
+    align-items: center;
+}
+.material-content img {
+    border-radius: 9px;
+    object-fit: cover;
+    width: 85px;
+    height: 85px;
+    border: 2px solid var(--border-light);
+}
+.material-details h5 {
+    margin: 0;
+    color: var(--dark-blue); /* Material details heading to deep charcoal */
+    font-size: 1.25em;
+}
+.material-details p {
+    margin: 7px 0 0;
+    color: var(--text-medium);
+    font-size: 0.92em;
+}
+.material-price-select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 22px;
+    border-top: 1px solid var(--border-light);
+    background-color: var(--bg-light);
+}
+.material-price-select .price {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--primary-orange); /* Price color to safety orange */
+}
+.material-price-select .btn {
+    padding: 9px 18px;
+}
+
+
+/* --- Recent Projects Gallery --- */
+.recent-projects-gallery {
+    padding: 50px 0;
+    background-color: var(--bg-light);
+}
+.recent-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    margin-top: 50px;
+}
+.project-thumbnail {
+    background-color: var(--bg-white); /* Explicitly white */
+    border-radius: 13px;
+    overflow: hidden;
+    box-shadow: 0 9px 28px rgba(0,0,0,0.09);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-light);
+}
+.project-thumbnail:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 14px 38px rgba(0,0,0,0.14);
+}
+.project-thumbnail img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.project-thumbnail:hover img {
+    transform: scale(1.04);
+}
+.project-thumbnail-info {
+    padding: 18px 22px;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+.project-thumbnail-info h4 {
+    margin: 0 0 7px;
+    color: var(--dark-blue); /* Project thumbnail heading to deep charcoal */
+    font-size: 1.3em;
+}
+.project-thumbnail-info p {
+    font-size: 0.92em;
+    color: var(--text-medium);
+    margin: 0;
+}
+
+
+
+/* --- Footer --- */
+.footer {
+    background-color: var(--dark-blue); /* Footer background to deep charcoal */
+    color: #e0e0e0;
+    padding: 40px 0 20px;
+    font-size: 0.92em;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 35px;
+    margin-bottom: 45px;
+}
+.footer-col h4 {
+    color: var(--primary-orange); /* Footer heading to safety orange */
+    margin-bottom: 22px;
+    font-size: 1.25em;
+}
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+.footer-col ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-col ul li a:hover {
+    color: var(--primary-orange); /* Footer link hover to safety orange */
+}
+.footer-col p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+.footer-col p .fas, .footer-col p .fab {
+    color: var(--primary-orange); /* Footer icon to safety orange */
+    font-size: 1.05em;
+}
+.footer-col a {
+    color: #e0e0e0;
+    text-decoration: none;
+}
+.footer-col a:hover {
+    color: var(--primary-orange); /* Footer link hover to safety orange */
+    text-decoration: underline;
+}
+
+.social-icons {
+    margin-top: 22px;
+    display: flex;
+    gap: 18px;
+}
+.social-icons a {
+    color: var(--bg-white);
+    font-size: 1.5em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-icons a:hover {
+    color: var(--primary-orange); /* Social icon hover to safety orange */
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.13);
+    padding-top: 22px;
+    text-align: center;
+}
+.footer-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.footer-legal-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 22px;
+}
+.footer-legal-links a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 0.88em;
+    transition: color 0.3s ease;
+}
+.footer-legal-links a:hover {
+    text-decoration: underline;
+    color: var(--primary-orange); /* Footer legal link hover to safety orange */
+}
+
+
+/* --- Mobile Responsiveness (Updated & Expanded) --- */
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none; /* Hidden by default on large screens */
+    font-size: 1.9em;
+    color: var(--text-dark); /* Menu toggle to dark grey */
+    cursor: pointer;
+    /* Added to align with nav-links when open */
+    align-self: center;
+}
+
+@media (max-width: 992px) {
+    /* Header & Navigation */
+    .header .nav-links {
+        display: none; /* Hide by default on smaller screens */
+        flex-direction: column;
+        position: absolute;
+        top: 64px; /* Adjust based on header height */
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-white);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+        text-align: center;
+        gap: 15px;
+        transition: transform 0.3s ease-out;
+        transform: translateY(-100%); /* Initially off-screen */
+    }
+    .header .nav-links.active {
+        display: flex; /* Show when active via JS */
+        transform: translateY(0); /* Slide into view */
+    }
+    .header .nav-links a {
+        margin: 0; /* Override margin from larger screens */
+    }
+    .header .nav-links .btn {
+        width: calc(100% - 60px); /* Full width minus padding for buttons inside nav */
+        margin: 10px 30px 0; /* Center with horizontal padding */
+    }
+    .menu-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    /* General Section Padding Adjustment */
+    .hero-section,
+    .how-it-works-section,
+    .common-concerns-section,
+    .top-rated-contractors,
+    .material-selection-section,
+    .recent-projects-gallery,
+    .faq-section {
+        padding: 40px 0;
+    }
+
+    /* Typography adjustments */
+    h1 { font-size: 2.6em; }
+    h2 { font-size: 2.1em; }
+    h3 { font-size: 1.7em; }
+    h4 { font-size: 1.25em; }
+
+    /* Hero Section */
+    .hero-main-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .hero-text {
+        text-align: center;
+        max-width: 100%; /* Take full width on smaller screens */
+    }
+    .hero-actions {
+        justify-content: center;
+        gap: 15px;
+    }
+    .hero-card {
+        width: 100%;
+        flex: none; /* Do not grow/shrink, take defined width */
+        padding: 30px;
+    }
+    .input-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* Grids */
+    .steps-grid,
+    .register-promo,
+    .top-rated-list,
+    .material-categories-grid,
+    .recent-projects-grid,
+    .footer-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+    }
+
+    .concerns-list {
+        grid-template-columns: 1fr; /* Single column on tablets and below */
+        gap: 14px;
+    }
+
+    /* Filters & Cards */
+    .price-range-filter {
+        padding: 30px;
+    }
+    .checkbox-group {
+        gap: 15px;
+    }
+
+    /* Footer */
+    .footer-bottom .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    .footer-legal-links {
+        flex-direction: column;
+        gap: 7px;
+        margin-top: 12px;
+    }
+
+    /* Home Building Stages Section - Responsive for "boxed" layout */
+    .home-building-stages-section {
+        max-width: 90%; /* Adjust max-width for tablets */
+        padding: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Header height adjustment */
+    .header {
+        padding: 10px 0; /* Slightly reduce header padding */
+    }
+    .header .nav-links {
+        top: 60px; /* Adjust if header height changed */
+    }
+
+    /* General Section Padding Adjustment */
+    .hero-section,
+    .how-it-works-section,
+    .common-concerns-section,
+    .top-rated-contractors,
+    .material-selection-section,
+    .recent-projects-gallery,
+    .faq-section {
+        padding: 35px 0;
+    }
+
+    /* Typography adjustments */
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+    h3 { font-size: 1.5em; }
+    h4 { font-size: 1.1em; }
+
+    /* Buttons */
+    .btn-lg {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    /* Hero section Specifics */
+    .hero-card {
+        padding: 25px;
+    }
+    .hero-card h3 {
+        font-size: 1.7em;
+    }
+
+    /* How It Works Grid becomes single column on smaller tablets */
+    .steps-grid,
+    .register-promo,
+    .top-rated-list,
+    .material-categories-grid,
+    .recent-projects-grid {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 25px;
+    }
+
+    /* Concerns Card */
+    .concerns-card {
+        padding: 30px;
+    }
+    .concerns-card h3 {
+        font-size: 2em;
+    }
+    .concerns-list li {
+        padding: 12px 15px;
+    }
+
+    /* Contractor Card */
+    .contractor-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    .rating-display {
+        align-items: center;
+    }
+
+    /* Material Selection */
+    .price-range-filter {
+        flex-direction: column; /* Stack filter elements */
+        align-items: flex-start;
+        padding: 25px;
+    }
+    .price-range-filter label {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .price-range-filter input[type="range"] {
+        width: 100%;
+        min-width: unset; /* Remove min-width to allow shrinking */
+    }
+    .checkbox-group {
+        width: 100%;
+        justify-content: center;
+    }
+    .material-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    .material-content img {
+        width: 70px;
+        height: 70px;
+    }
+    .material-details h5 {
+        font-size: 1.15em;
+    }
+    .material-price-select {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 18px;
+    }
+    .material-price-select .btn {
+        width: 100%;
+    }
+
+    /* FAQ Section */
+    .faq-question h5 {
+        font-size: 1.05em;
+    }
+    .faq-item.active .faq-answer {
+        padding: 15px 22px 18px;
+    }
+
+    /* Home Building Stages Section - Responsive for "boxed" layout */
+    .home-building-stages-section {
+        max-width: 95%; /* Adjust max-width for smaller tablets/large phones */
+        margin: 30px auto; /* Less vertical margin on smaller screens */
+        padding: 20px;
+    }
+    .home-building-stages-section .container {
+        justify-content: center; /* Center the card within the section on smaller screens */
+    }
+    .stages-card {
+        width: 100%; /* Make the card take full width of the section box */
+        margin-right: 0; /* Remove auto margin when centered */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Header & Navigation */
+    .header {
+        padding: 8px 0;
+    }
+    .header .nav-links {
+        top: 54px; /* Adjust based on header height */
+    }
+    .logo {
+        font-size: 1.5em;
+    }
+    .logo img {
+        height: 32px;
+    }
+
+    /* General Section Padding Adjustment */
+    .hero-section,
+    .how-it-works-section,
+    .common-concerns-section,
+    .top-rated-contractors,
+    .material-selection-section,
+    .recent-projects-gallery,
+    .faq-section {
+        padding: 25px 0;
+    }
+
+    /* Typography adjustments */
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.5em; }
+    h3 { font-size: 1.3em; }
+    h4 { font-size: 1em; }
+    .subtitle {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 9px 18px;
+        font-size: 0.9em;
+    }
+    .btn-lg {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+    .hero-actions {
+        gap: 10px;
+    }
+
+    /* Hero Card */
+    .hero-card {
+        padding: 20px;
+    }
+    .hero-card h3 {
+        font-size: 1.5em;
+    }
+    .form-group input,
+    .form-group select {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    .talk-to-planner {
+        font-size: 0.95em;
+    }
+
+    /* Card padding general adjustment */
+    .register-card, .concerns-card, .top-contractor-card, .material-card, .project-thumbnail, .faq-item {
+        padding: 18px;
+        border-radius: 8px;
+    }
+
+    /* Specific list item adjustments */
+    .concerns-list li, .stages-card li {
+        font-size: 15px;
+        padding: 10px 0;
+    }
+
+    /* Home Building Stages Section - Responsive for "boxed" layout */
+    .home-building-stages-section {
+        max-width: 100%; /* Take full width on very small screens */
+        border-radius: 0; /* Remove border-radius on full width */
+        padding: 15px;
+        box-shadow: none; /* Remove box-shadow if it becomes full width to blend better */
+    }
+    .stages-card {
+        padding: 20px 15px; /* Adjust card padding for small screens */
+    }
+    .stages-card h3 {
+        font-size: 20px;
+    }
+}

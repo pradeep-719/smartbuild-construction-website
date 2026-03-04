@@ -1,0 +1,81 @@
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Navbar container */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2E2E2E;
+  padding: 12px 24px; 
+  flex-wrap: wrap;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Logo styling */
+.logo {
+  color: #F9A825; 
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+/* Location dropdown */
+.location {
+  padding: 8px;
+  font-size: 15px;
+  border-radius: 4px;
+  border: 1px solid #BDBDBD;
+  margin-right: 20px;
+  background-color: white;
+}
+
+/* Search bar */
+.search {
+  padding: 8px 12px;
+  width: 250px;
+  font-size: 15px;
+  border-radius: 4px;
+  border: 1px solid #BDBDBD;
+  margin-right: auto;
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Individual nav link */
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 14px;
+  transition: background 0.3s, color 0.3s;
+  border-radius: 4px;
+}
+
+/* Hover effect */
+.nav-links a:hover {
+  background-color: #F57C00;
+  color: white;
+}
+
+/* Active nav */
+.nav-links a.active {
+  background-color: #F9A825; 
+  color: #2E2E2E;
+  font-weight: bold;
+}
+
+/* Cart icon spacing */
+.fa-shopping-cart {
+  margin-right: 6px;
+}

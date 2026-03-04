@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Role</title>
+    <style>
+        /* CSS Reset and Global Styles */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --tertiary-color: #e74c3c;
+            --card-bg: #fff;
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 40px;
+            font-size: 2.2em;
+        }
+
+        /* Grid Container for the Cards */
+        .card-grid {
+            display: grid;
+            /* The repeat(auto-fit, minmax(280px, 1fr)) is the magic for responsiveness:
+               1. auto-fit: Creates as many columns as will fit.
+               2. minmax(280px, 1fr): Each column must be at least 280px wide, but 
+                  should take up an equal fraction (1fr) of the available space.
+                  This makes them stack on screens smaller than 280px * 3 (approx 840px).
+            */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px; /* Space between the cards */
+            max-width: 1100px;
+            margin: 0 auto; /* Center the grid container */
+            padding: 20px 0;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow-light);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex; /* Flex is used inside the card for alignment */
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 250px; /* Ensure cards have a minimum height */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-title {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            color: #666;
+            margin-bottom: 25px;
+            flex-grow: 1; /* Allows text to push the button down */
+            padding-top: 10px;
+        }
+
+        /* Button Styling */
+        .card-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Role-Specific Colors */
+
+        /* User/Customer */
+        .card-user .card-title { color: #e67e00; }
+        .card-user .card-button { background-color:#e67e00; }
+        .card-user .card-button:hover { background-color:#2980b9; }
+
+        /* Contractor */
+        .card-contractor .card-title { color: var(--secondary-color); }
+        .card-contractor .card-button { background-color: var(--secondary-color); }
+        .card-contractor .card-button:hover { background-color: #27ae60; }
+
+        /* Admin */
+        .card-admin .card-title { color: var(--tertiary-color); }
+        .card-admin .card-button { background-color: var(--tertiary-color); }
+        .card-admin .card-button:hover { background-color: #c0392b; }
+
+        /* Responsive Breakpoint: Ensure 3 columns on large screens */
+        @media (min-width: 900px) {
+            .card-grid {
+                /* Explicitly set 3 equal columns for large displays */
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Select Your Role and Continue</h1>
+
+    <div class="card-grid">
+
+        <div class="card card-user">
+            <div>
+                <h2 class="card-title">User / Customer</h2>
+                <p class="card-text">
+                    I am looking to browse and purchase products or services. Log in or register here to manage your profile and orders.
+                </p>
+            </div>
+            <a href="index.php" class="card-button">
+                User Login / Register
+            </a>
+        </div>
+
+        <div class="card card-contractor">
+            <div>
+                <h2 class="card-title">Contractor</h2>
+                <p class="card-text">
+                    I offer services and need to manage my projects, bids, and profile. Access your contractor dashboard here.
+                </p>
+            </div>
+            <a href="registr.php" class="card-button">
+                Contractor Login/ Register
+            </a>
+        </div>
+
+        <div class="card card-admin">
+            <div>
+                <h2 class="card-title">Admin</h2>
+                <p class="card-text">
+                    I am a system administrator. Access the control panel to manage all users, contractors, and system settings.
+                </p>
+            </div>
+            <a href="admin_login.php" class="card-button">
+                Admin Login/ Register
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

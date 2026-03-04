@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏗️ Construction Store Finder (Orange Theme)</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="stl.css">
+<style>
+    /* 1. CSS Variables for Orange Theme */
+    :root {
+        --primary-color: #ff9900; /* Rich Orange */
+        --primary-dark: #cc7a00; /* Darker Orange for Hover */
+        --background-light: #fffaf0; /* Off-white/Creamy background */
+        --background-gradient: linear-gradient(135deg, #fff2e0, #ffe7c2);
+        --text-dark: #333333;
+        --card-background: #ffffff;
+        --border-color: #ffc14d; /* Light Orange Border */
+        --highlight-bg: #ffebcc; /* Very light orange highlight */
+    }
+
+    /* 2. Container to replace body styling */
+    .app-wrapper {
+        font-family: 'Segoe UI', Arial, sans-serif;
+       
+        min-height: 100vh; /* Full viewport height */
+        margin: 0;
+        padding: 20px;
+        color: var(--text-dark);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Start content at the top */
+    }
+
+    .con {
+        width: 100%;
+        max-width: 800px;
+        margin: 30px 0;
+        text-align: center;
+        background: var(--card-background);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Stronger shadow */
+    }
+
+    /* 3. Typography */
+    h2 {
+        color: var(--primary-color);
+        margin-bottom: 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* 4. Input & Button Controls (Flexbox for Responsiveness) */
+    .controls-group {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; /* Allows wrapping on small screens */
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    input {
+        padding: 12px;
+        flex-grow: 1; /* Inputs take up available space */
+        min-width: 150px;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        font-size: 16px;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+    input:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 8px rgba(255, 153, 0, 0.4);
+    }
+
+    button {
+        padding: 12px 25px;
+        background: var(--primary-color);
+        border: none;
+        color: white;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+        flex-shrink: 0; /* Prevents button from shrinking */
+    }
+    button:hover {
+        background: var(--primary-dark);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* 5. Store Information Display */
+    #store-info {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    /* 6. Store Card Design */
+    .store-card {
+        background: var(--card-background);
+        border: 1px solid var(--border-color);
+        border-left: 5px solid var(--primary-color); /* Accent stripe */
+        border-radius: 10px;
+        padding: 20px;
+        width: 100%;
+        max-width: 650px;
+        text-align: left;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .store-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(255, 153, 0, 0.2);
+    }
+    .store-card h3 {
+        color: var(--text-dark);
+        background: var(--highlight-bg);
+        padding: 8px 10px;
+        border-radius: 6px;
+        margin-top: 0;
+        font-size: 1.2em;
+        border-bottom: 1px dashed var(--primary-color);
+    }
+    .store-card p {
+        margin: 8px 0;
+        color: var(--text-dark);
+        line-height: 1.5;
+    }
+    .store-card p b {
+        color: var(--primary-dark);
+    }
+    
+    .loading {
+        margin-top: 20px;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    
+    .error-msg {
+        color: var(--primary-dark);
+        font-weight: bold;
+    }
+
+    /* 7. Map Button Styling */
+    .map-btn {
+        background: #28a745; /* Green for Action/Map */
+        padding: 8px 16px;
+        color: white;
+        border-radius: 6px;
+        display: inline-block;
+        text-decoration: none;
+        font-size: 14px;
+        margin-top: 10px;
+        transition: background 0.3s;
+    }
+    .map-btn:hover {
+        background: #1e7e34;
+    }
+
+    /* 8. Responsiveness (Mobile First) */
+    @media (max-width: 600px) {
+        .app-wrapper {
+            padding: 10px;
+        }
+        .con {
+            margin: 20px 0;
+            padding: 20px;
+        }
+        .controls-group {
+            flex-direction: column; /* Stack controls vertically */
+        }
+        input, button {
+            width: 100%; /* Full width for inputs and button */
+            margin: 5px 0;
+        }
+        .store-card {
+            padding: 15px;
+        }
+    }
+</style>
+</head>
+<body>
+ <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="https://thumbs2.imgbox.com/26/2d/fxicueNg_t.jpg" alt=" ">
+                SmartBuild
+
+   </a>
+            <nav class="nav-links">
+                <a href="home.php"><b>Home</b></a>
+               
+                <a href="contractors.php"><b>Contractors</b></a>
+                <a href="material.php"><b>Materials</b></a>
+                
+                <a href="alllogin.php" class="btn btn-sm btn-outline"><b>Login /Sign up</b></a>
+                
+            </nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+	
+<div class="app-wrapper">
+    <div class="con">
+        <h2>🏗️ Construction & Hardware Store Finder</h2>
+        <div class="controls-group">
+            <input type="text" id="state" placeholder="Enter State (e.g. Maharashtra)">
+            <input type="text" id="city" placeholder="Enter City (e.g. Pune)">
+            <button onclick="findStores()">🔍 Search</button>
+        </div>
+        <div id="store-info">
+            <p>Enter a city and state to find nearby material suppliers.</p>
+        </div>
+    </div>
+</div>
+ <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>  SmartBuild</h4>
+                <ul>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="team.php">Our Team</a></li>
+                    <li><a href="ceareer.php">Careers</a></li>
+                   
+                  
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="home.php">Home Construction</a></li>
+                    <li><a href="showpro.php">Commercial Projects</a></li>
+                 <li><a href="contractorfro.php">Client Testimonials</a></li>
+                 
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    
+                    <li><a href="material.php">Material Catalog</a></li>
+                    <li><a href="guide.php">Building Guides</a></li>
+                   
+                    <li><a href="remark.php">Help Center</a></li>
+                    
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect With Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> 123  SmartBuild St, Dombivli, MH 421201</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+919876543210">+91 98765 43210</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@SmartBuild.com">info@  SmartBuild.com</a></p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025   SmartBuild. All rights reserved.</p>
+                <ul class="footer-legal-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+<script>
+  // JavaScript for Mobile Navigation Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Optional: Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu after clicking a link
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // JavaScript for FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.closest('.faq-item');
+                faqItem.classList.toggle('active');
+                // Optional: Close other open FAQ items
+                faqQuestions.forEach(item => {
+                    if (item !== question && item.closest('.faq-item').classList.contains('active')) {
+                        item.closest('.faq-item').classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Dynamic Progress Bar for "Track My Work" (Example) - Not directly used in this improved HTML, but kept for reference
+        // You would typically update this based on backend data for a real application
+        const progressSegment = document.querySelector('.progress-segment'); // This element isn't in the new HTML, but keep the JS if you plan to re-add.
+        const progressSteps = document.querySelectorAll('.progress-step'); // Same as above.
+
+        function updateProgressBar(activeStepIndex) {
+            if (progressSteps.length > 0) { // Check if elements exist before trying to manipulate them
+                progressSteps.forEach((step, index) => {
+                    if (index <= activeStepIndex) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
+
+                const totalSteps = progressSteps.length;
+                let percentage = 0;
+                if (activeStepIndex >= 0) {
+                    percentage = (activeStepIndex / (totalSteps - 1)) * 100;
+                }
+                if (progressSegment) { // Check if progressSegment exists
+                    progressSegment.style.width = `${percentage}%`;
+                }
+            }
+        }
+
+        // Set initial progress (e.g., Work Started is the 3rd step, index 2)
+        // You would change this value based on actual project status
+        // updateProgressBar(2); 
+
+
+
+
+// ✅ Helper function: Capitalize each word (for city & state)
+  function toTitleCase(text) {
+      return text
+          .split(' ')
+          .filter(word => word.length > 0)
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+          .join(' ');
+  }
+
+  // ✅ Smart Construction Store Finder
+  async function findStores() {
+      let city = document.getElementById('city').value.trim();
+      let state = document.getElementById('state').value.trim();
+      const infoDiv = document.getElementById('store-info');
+      infoDiv.innerHTML = '';
+
+      if (!city || !state) {
+          infoDiv.innerHTML = '<p class="error-msg">⚠️ Please enter both city and state.</p>';
+          return;
+      }
+
+      // ✅ Auto-correct case for both city and state
+      city = toTitleCase(city);
+      state = toTitleCase(state);
+
+      infoDiv.innerHTML = '<p class="loading">⏳ Searching nearby construction stores...</p>';
+
+      const query = `
+          [out:json][timeout:25];
+          area["name"="${city}"];
+          (
+              node["shop"~"hardware|building_materials|doityourself"](area);
+          );
+          out body qt;
+      `;
+
+      try {
+          const res = await fetch("https://overpass-api.de/api/interpreter", {
+              method: "POST",
+              body: query
+          });
+          const data = await res.json();
+          infoDiv.innerHTML = '';
+
+          const storesWithAddress = data.elements.filter(store =>
+              store.tags["addr:street"] ||
+              store.tags["addr:city"] ||
+              store.tags["addr:state"] ||
+              store.tags["addr:postcode"]
+          );
+
+          if (storesWithAddress.length === 0) {
+              infoDiv.innerHTML = `<p class="error-msg">No stores found in ${city}, ${state}.</p>`;
+              return;
+          }
+
+          infoDiv.innerHTML = `<h3>Found ${storesWithAddress.length} Construction Stores in ${city}, ${state}</h3>`;
+
+          storesWithAddress.forEach((store, i) => {
+              const name = store.tags.name || "Unnamed Store";
+              const type = (store.tags.shop || "N/A").replace(/_/g, ' ');
+              const addressParts = [
+                  store.tags["addr:housenumber"],
+                  store.tags["addr:street"],
+                  store.tags["addr:city"],
+                  store.tags["addr:state"],
+                  store.tags["addr:postcode"]
+              ].filter(Boolean);
+              const address = addressParts.join(", ") || "Address incomplete/not found.";
+
+              const lat = store.lat.toFixed(4);
+              const lon = store.lon.toFixed(4);
+              const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`;
+
+              infoDiv.innerHTML += `
+                  <div class="store-card">
+                      <h3>${i + 1}. ${name}</h3>
+                      <p><b>🧱 Type:</b> ${type}</p>
+                      <p><b>📍 Address:</b> ${address}</p>
+                      <p><b>🌐 Coordinates:</b> ${lat}, ${lon}</p>
+                      <a class="map-btn" href="${mapsUrl}" target="_blank">📌 View on Map</a>
+                  </div>
+              `;
+          });
+      } catch (err) {
+          infoDiv.innerHTML = `<p class="error-msg">❌ Error fetching data: Check city/state spelling or try again later.</p>`;
+          console.error("Overpass API Error:", err);
+      }
+  }
+</script>
+
+</body>
+</html>

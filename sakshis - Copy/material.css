@@ -1,0 +1,419 @@
+/* Base Styles */
+body {
+  font-family: 'Roboto', sans-serif; /* Changed to Roboto for consistency */
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5; /* Lighter background */
+  color: #333;
+}
+
+/* Navbar - Modern & Transparent-like */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Use rgba for transparency, or a very light solid color */
+ background-color: var(--bg-white);
+  /* background: linear-gradient(90deg, #1e1e1e, #343434); /* Original, kept for reference */
+  padding: 12px 25px; /* Slightly adjusted padding */
+  color:black; /* Golden yellow for accents */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Softer shadow */
+  border-bottom: 2px solid #facc15; /* Thinner border */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(5px); /* Add blur effect for transparent glass look */
+  -webkit-backdrop-filter: blur(5px); /* Safari support */
+}
+
+.logo img {
+    border-radius: 5px;
+    vertical-align: middle;
+    height: 38px;
+}
+.navbar .logo {
+  display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 1.7em;
+    font-weight: bold;
+    color: var(--dark-blue); /* Logo color to deep charcoal */
+    text-decoration: none;
+}
+
+.navbar .logo::before {
+  /* Removed content here as we're using a text emoji in HTML now */
+  content: none;
+}
+/* You can uncomment and use this if you want a specific emoji/icon before text */
+/* .navbar .logo::before {
+    content: '🏗️ ';
+    margin-right: 5px;
+    font-size: 1.8rem;
+} */
+
+ .product-card {
+            border:1px solid #ccc;
+            padding:10px;
+            margin:10px;
+            width:200px;
+            display:inline-block;
+            text-align:center;
+        }
+        .product-card img {
+            width:100%;
+            height:150px;
+            object-fit:cover;
+        }
+        
+.navbar .location {
+    padding: 6px 10px; /* Adjusted padding */
+    border-radius: 4px;
+    border: 1px solid #facc15; /* Border matching accent color */
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+    color: var(--dark-blue);
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-left: 15px;
+}
+.navbar .location option {
+    background-color: #343434; /* Darker background for options */
+   color: var(--dark-blue);
+}
+
+
+.navbar input.search {
+  padding: 8px 15px; /* Adjusted padding */
+  border-radius: 20px; /* More rounded search bar */
+  border: 1px solid #facc15; /* Border matching accent color */
+  background-color: var(--dark-blue); /* Slightly transparent background */
+  outline: none;
+  font-size: 0.9rem; /* Slightly smaller font */
+  margin-left: 20px;
+ color: var(--dark-blue);
+  flex-grow: 1; /* Allow search bar to grow */
+  max-width: 350px; /* Max width for search bar */
+}
+.navbar input.search::placeholder {
+   color: var(--dark-blue); /* Lighter placeholder text */
+}
+
+.navbar .nav-links a {
+ color: var(--dark-blue);
+  text-decoration: none;
+  margin-left: 25px; /* Increased spacing */
+  font-weight: 600;
+  transition: color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  font-size: 0.95rem; /* Slightly smaller font */
+  position: relative; /* For underline effect */
+}
+
+.navbar .nav-links a:hover {
+color: var(--dark-blue);
+  transform: translateY(-2px);
+}
+
+.navbar .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--dark-blue);
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar .nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* Layout */
+.container {
+  display: flex;
+  padding: 25px; /* Slightly increased padding */
+  gap: 25px; /* Added gap for consistent spacing */
+}
+
+/* Filters */
+.filters {
+  width: 280px; /* Slightly wider filter section */
+  background-color: #fff;
+  padding: 20px; /* Increased padding */
+  /* margin-right: 20px; Removed margin-right due to gap */
+  border-radius: 10px; /* More rounded corners */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Stronger shadow */
+  border: 1px solid #e0e0e0; /* Lighter border */
+}
+
+.filters h3,
+.filters h4 {
+  margin-top: 15px; /* Added margin-top */
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1.25rem; /* Slightly larger headings */
+}
+
+.filters input[type="text"] {
+  width: calc(100% - 12px); /* Adjusted width for padding */
+  padding: 8px; /* Increased padding */
+  margin: 10px 0 15px; /* Adjusted margins */
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+
+.filters input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none; /* Remove default styling */
+  height: 8px; /* Thicker slider track */
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.8;
+  transition: opacity .2s;
+  margin: 10px 0 15px;
+}
+.filters input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px; /* Larger thumb */
+  height: 20px; /* Larger thumb */
+  border-radius: 50%; /* Round thumb */
+  background: #007bff; /* Primary color for thumb */
+  cursor: grab;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.filters input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: grab;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.filters label {
+    display: block; /* Each label on a new line */
+    margin-bottom: 8px; /* Space between labels */
+    font-size: 0.95rem;
+    color: #555;
+    cursor: pointer;
+}
+.filters input[type="checkbox"],
+.filters input[type="radio"] {
+    margin-right: 8px; /* Space between checkbox and text */
+    transform: scale(1.1); /* Slightly larger checkboxes */
+    cursor: pointer;
+}
+
+
+/* Product Section */
+.product-section {
+  flex-grow: 1;
+}
+
+.sort-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* Increased margin */
+  background-color: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid #e0e0e0;
+}
+
+.sort-options h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.sort-options select {
+  padding: 8px 12px; /* Increased padding */
+  border-radius: 6px; /* More rounded */
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); /* Adjusted minmax for slightly larger cards */
+  gap: 25px; /* Increased gap */
+}
+
+/* Product Cards */
+.product-card {
+  background-color: #fff;
+  border-radius: 10px; /* More rounded corners */
+  padding: 22px; /* Increased padding */
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1); /* Stronger, more noticeable shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* Ensure content doesn't break rounded corners */
+}
+
+.product-card:hover {
+  transform: translateY(-8px); /* More pronounced lift */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Even stronger shadow on hover */
+}
+
+.product-card img {
+  max-width: 90%; /* Slightly smaller relative to card */
+  height: 160px; /* Slightly taller */
+  object-fit: contain;
+  margin-bottom: 15px; /* Increased margin */
+}
+
+.product-card h4 {
+  font-size: 1.2rem; /* Slightly larger heading */
+  margin: 10px 0 8px; /* Adjusted margins */
+  color: #222;
+}
+
+.product-card p {
+  margin: 5px 0; /* Adjusted margins */
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.product-card .price-tag { /* New class for price */
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #007bff; /* Primary color for price */
+    margin-top: 10px;
+}
+
+.product-card .star {
+  color: #ffc107; /* Brighter gold for stars */
+  font-size: 1rem; /* Consistent star size */
+  margin-left: 3px;
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  justify-content: space-around; /* Use space-around for balanced spacing */
+  gap: 10px; /* Gap between buttons */
+  margin-top: 18px; /* Increased margin */
+}
+
+.cart-btn,
+.buy-btn {
+  padding: 10px 18px; /* Increased padding */
+  border: none;
+  border-radius: 8px; /* More rounded buttons */
+  cursor: pointer;
+  font-size: 1rem; /* Medium font size */
+  font-weight: 600; /* Bolder text */
+  transition: all 0.3s ease;
+  flex: 1; /* Make buttons take equal width */
+  max-width: 150px; /* Limit button width */
+}
+
+.cart-btn {
+  background-color: #28a745; /* Success green */
+  color: white;
+  box-shadow: 0 3px 8px rgba(40, 167, 69, 0.2);
+}
+
+.cart-btn:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+.cart-btn:active {
+    transform: translateY(0);
+}
+
+.buy-btn {
+  background-color: #ffc107; /* Warning yellow */
+  color: #333; /* Dark text for contrast */
+  box-shadow: 0 3px 8px rgba(255, 193, 7, 0.2);
+}
+
+.buy-btn:hover {
+  background-color: #e0a800;
+  transform: translateY(-2px);
+}
+.buy-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media screen and (max-width: 992px) { /* Added breakpoint for larger tablets */
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+    }
+    .filters {
+        width: 200px; /* Slightly narrower filter for smaller screens */
+        padding: 15px;
+    }
+    .container {
+        padding: 15px;
+        gap: 15px;
+    }
+    .navbar {
+        padding: 10px 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .filters {
+    width: auto; /* Allow filters to take full width */
+    margin-bottom: 20px;
+  }
+
+  .sort-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr; /* Single column on small screens */
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+
+  .navbar .logo {
+      margin-bottom: 10px;
+  }
+  .navbar .location {
+      margin-left: 0;
+      margin-right: 10px;
+      margin-bottom: 10px;
+  }
+
+  .navbar input.search {
+    width: calc(100% - 30px); /* Full width minus padding */
+    margin-top: 10px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .navbar .nav-links {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+  }
+  .navbar .nav-links a {
+      margin: 0 5px; /* Adjust spacing for small screens */
+      font-size: 0.85rem;
+  }
+}
